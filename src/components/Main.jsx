@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import * as data from '../assets/data.json';
 
-export default class Main extends React.Component {
+class Main extends React.Component {
   state = {
     page: 1,
-    totalPages: Math.ceil(Object.keys(data.ru).length / 10),
+    totalPages: Math.ceil(Object.keys(this.props.language.value === 'ru' ? data.ru : data.en).length / 10),
   };
 
   render() {
@@ -26,7 +27,7 @@ export default class Main extends React.Component {
               </p>
             ))}
           </div>
-          {Object.entries(data.ru)
+          {Object.entries(this.props.language.value === 'ru' ? data.ru : data.en)
             .slice((this.state.page - 1) * 10, this.state.page * 10)
             .map((entry, i) => (
               <div key={i} className="review">
@@ -40,3 +41,12 @@ export default class Main extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  const { language } = state;
+  return {
+    language,
+  };
+}
+
+export default connect(mapStateToProps)(Main);

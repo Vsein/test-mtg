@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from '../assets/logo.png';
 import Watch from './Watch';
+import LanguageSwitch from './LanguageSwitch';
 
 export default class Header extends React.Component {
   render() {
@@ -8,6 +9,7 @@ export default class Header extends React.Component {
       <header className="header">
         <img src={Logo} className="logo" />
         <Watch />
+        <LanguageSwitch />
       </header>
     );
   }

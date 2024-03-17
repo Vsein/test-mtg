@@ -1,20 +1,8 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query';
+import { configureStore } from '@reduxjs/toolkit';
+import languageReducer from './languageSlice';
 
-const combinedReducer = combineReducers({
+export default configureStore({
+  reducer: {
+    language: languageReducer
+  },
 });
-
-const rootReducer = (state, action) => {
-  if (action.type === 'RESET') {
-    state = undefined;
-  }
-  return combinedReducer(state, action);
-};
-
-const store = configureStore({
-  reducer: rootReducer,
-});
-
-setupListeners(store.dispatch);
-
-export { store };
