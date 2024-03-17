@@ -32,10 +32,26 @@
 
 .main {
   grid-area: main;
+  display: flex;
+  justify-content: center;
 }
 
 .logo {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+}
+
+.reviewlist {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  height: min-content;
+  width: min(100%, 700px);
+  gap: 15px;
+  padding: 20px;
+}
+
+.review {
+  width: 100%;
 }
