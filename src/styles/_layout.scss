@@ -50,6 +50,19 @@
   width: min(100%, 700px);
   gap: 15px;
   padding: 20px;
+
+  &-pages {
+    display: flex;
+    gap: 10px;
+
+    & * {
+      cursor: pointer;
+
+      &.active {
+        color: var(--highlight-color);
+      }
+    }
+  }
 }
 
 .review {

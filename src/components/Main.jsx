@@ -11,7 +11,21 @@ export default class Main extends React.Component {
     return (
       <main className="main">
         <div className="reviewlist">
-          {this.state.totalPages}
+          <div className="reviewlist-pages">
+            {[...Array(this.state.totalPages)].map((page, i) => (
+              <p
+                key={i}
+                className={`${this.state.page === i + 1 ? 'active' : ''}`}
+                onClick={() =>
+                  this.setState({
+                    page: i + 1,
+                  })
+                }
+              >
+                {i + 1}
+              </p>
+            ))}
+          </div>
           {Object.entries(data.ru)
             .slice((this.state.page - 1) * 10, this.state.page * 10)
             .map((entry, i) => (
